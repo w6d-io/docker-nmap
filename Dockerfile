@@ -11,9 +11,10 @@ LABEL maintainer="${USER_NAME} <${USER_EMAIL}>" \
         org.label-schema.version=$VERSION
 
 ENV DESIRED_VERSION $DESIRED_VERSION
-RUN echo y | apk add --no-cache git curl  && \
-    cd scripts  && \
-    git clone https://github.com/vulnersCom/nmap-vulners.git vulnersCom_nmapvulner  && \
-    git clone https://github.com/scipag/vulscan.git scipag_vulscan
+RUN echo y | apk update
+RUN echo y | apk add --no-cache git curl
+RUN cd scripts
+RUN git clone https://github.com/vulnersCom/nmap-vulners.git vulnersCom_nmapvulner
+RUN git clone https://github.com/scipag/vulscan.git scipag_vulscan
 COPY scripts/* /usr/local/bin/
 
