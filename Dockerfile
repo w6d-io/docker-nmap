@@ -18,5 +18,5 @@ RUN ls -la
 RUN mkdir scripts && cd scripts
 RUN git clone https://github.com/vulnersCom/nmap-vulners.git vulnersCom_nmapvulner
 RUN git clone https://github.com/scipag/vulscan.git scipag_vulscan
-COPY scripts/* /usr/local/bin/
+
 
