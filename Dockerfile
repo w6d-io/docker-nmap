@@ -15,7 +15,7 @@ RUN echo y | apk update
 RUN echo y | apk add --no-cache git curl
 RUN ls
 RUN ls -la
-RUN cd scripts
+RUN mkdir scripts && cd scripts
 RUN git clone https://github.com/vulnersCom/nmap-vulners.git vulnersCom_nmapvulner
 RUN git clone https://github.com/scipag/vulscan.git scipag_vulscan
 COPY scripts/* /usr/local/bin/
