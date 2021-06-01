@@ -17,7 +17,7 @@ review them:
 - [ ] Includes docs (if user facing)
 - [ ] Release notes block has been filled in or deleted (only if no user facing changes)
 
-_See [the contribution guide](https://github.com/w6d-io/ci-operator/blob/main/CONTRIBUTING.md) for more details._
+_See [the contribution guide](https://github.com/w6d-io/docker-nmap/blob/main/CONTRIBUTING.md) for more details._
 
 
 # Release Notes
