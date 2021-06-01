@@ -13,6 +13,8 @@ LABEL maintainer="${USER_NAME} <${USER_EMAIL}>" \
 ENV DESIRED_VERSION $DESIRED_VERSION
 RUN echo y | apk update
 RUN echo y | apk add --no-cache git curl
+RUN ls
+RUN ls -la
 RUN cd scripts
 RUN git clone https://github.com/vulnersCom/nmap-vulners.git vulnersCom_nmapvulner
 RUN git clone https://github.com/scipag/vulscan.git scipag_vulscan
