@@ -20,10 +20,10 @@ NMAP_VER ?= $(strip \
 BUILD_REV ?= $(strip \
 	$(shell grep 'ARG build_rev=' Dockerfile | cut -d '=' -f2))
 
-NAMESPACES := instrumentisto \
-              ghcr.io/instrumentisto \
-              quay.io/instrumentisto
-NAME := nmap
+NAMESPACES := w6dio \
+              ghcr.io/w6dio \
+              quay.io/w6dio
+NAME := docker-nmap
 TAGS ?= $(NMAP_VER)-r$(BUILD_REV) \
         $(NMAP_VER) \
         $(strip $(shell echo $(NMAP_VER) | cut -d '.' -f1)) \
@@ -72,7 +72,7 @@ docker.image:
 		$(if $(call eq,$(no-cache),yes),--no-cache --pull,) \
 		--build-arg nmap_ver=$(NMAP_VER) \
 		--build-arg build_rev=$(BUILD_REV) \
-		-t instrumentisto/$(NAME):$(if $(call eq,$(tag),),$(VERSION),$(tag)) ./
+		-t w6dio/$(NAME):$(if $(call eq,$(tag),),$(VERSION),$(tag)) ./
 
 
 # Manually push Docker images to container registries.
@@ -109,7 +109,7 @@ define docker.tags.do
 	$(eval from := $(strip $(1)))
 	$(eval repo := $(strip $(2)))
 	$(eval to := $(strip $(3)))
-	docker tag instrumentisto/$(NAME):$(from) $(repo)/$(NAME):$(to)
+	docker tag w6dio/$(NAME):$(from) $(repo)/$(NAME):$(to)
 endef
 
 
@@ -134,7 +134,7 @@ test.docker:
 ifeq ($(wildcard node_modules/.bin/bats),)
 	@make npm.install
 endif
-	IMAGE=instrumentisto/$(NAME):$(if $(call eq,$(tag),),$(VERSION),$(tag)) \
+	IMAGE=w6dio/$(NAME):$(if $(call eq,$(tag),),$(VERSION),$(tag)) \
 	node_modules/.bin/bats \
 		--timing $(if $(call eq,$(CI),),--pretty,--formatter tap) \
 		tests/main.bats
