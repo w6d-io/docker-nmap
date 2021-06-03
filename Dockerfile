@@ -7,7 +7,7 @@ ARG USER_EMAIL="jack.crosnier@w6d.io"
 ARG USER_NAME="Jack CROSNIER"
 LABEL maintainer="${USER_NAME} <${USER_EMAIL}>" \
         org.label-schema.vcs-ref=$VCS_REF \
-        org.label-schema.vcs-url="https://github.com/w6d-io/docker-nmap" \
+        org.label-schema.vcs-url="https://github.com/w6d-io/docker-owaspzap" \
         org.label-schema.build-date=$BUILD_DATE \
         org.label-schema.version=$VERSION
 
@@ -53,5 +53,10 @@ RUN apk add --update --no-cache --virtual .build-deps \
  && rm -rf /var/cache/apk/* \
            /tmp/nmap*
 
+RUN echo y | apk update
+RUN echo y | apk add --no-cache git curl
+RUN mkdir -p scripts && cd scripts && \
+    git clone https://github.com/vulnersCom/nmap-vulners.git vulnersCom_nmapvulner && \
+    git clone https://github.com/scipag/vulscan.git scipag_vulscan
 
 ENTRYPOINT ["/usr/bin/nmap"]
