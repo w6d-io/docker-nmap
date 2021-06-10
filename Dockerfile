@@ -59,7 +59,7 @@ USER root
 
 RUN echo y | apk update
 RUN echo y | apk add --no-cache git curl
-RUN mkdir -p scripts && cd scripts && \
+RUN mkdir -p /scripts && cd /scripts && \
     git clone https://github.com/vulnersCom/nmap-vulners.git vulnersCom_nmapvulner && \
     git clone https://github.com/scipag/vulscan.git scipag_vulscan
 
