@@ -53,6 +53,10 @@ RUN apk add --update --no-cache --virtual .build-deps \
  && rm -rf /var/cache/apk/* \
            /tmp/nmap*
 
+#Copy doesn't respect USER directives so we need to chown and to do that we need to be root
+#Copy doesn't respect USER directives so we need to chown and to do that we need to be root
+USER root
+
 RUN echo y | apk update
 RUN echo y | apk add --no-cache git curl
 RUN mkdir -p scripts && cd scripts && \
