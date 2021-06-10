@@ -20,6 +20,7 @@ LABEL org.opencontainers.image.source="\
 # Install dependencies
 RUN apk add --update --no-cache \
             ca-certificates \
+            busybox-extras \
             libpcap \
             libgcc libstdc++ \
             libressl3.1-libcrypto libressl3.1-libssl \
